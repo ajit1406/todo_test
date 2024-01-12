@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_test/loginTask/loginScreen.dart';
 import 'package:todo_test/screens/Home_screen.dart';
@@ -48,7 +47,6 @@ class _SplashPageState extends State<SplashPage> {
       backgroundColor: uicolors.appblue.withAlpha(205),
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Lottie.asset('assets/lottie/splashani.json'),
           Text(
             'Welcome TO',
             style: TextStyle(
