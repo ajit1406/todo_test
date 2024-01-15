@@ -16,13 +16,13 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () async {
+    Timer(const Duration(seconds: 3), () async {
       var prefs = await SharedPreferences.getInstance();
       bool? Checklogin = prefs.getBool(ComponentClass.Login_pref_key);
 
       Widget navigateTo = const LoginScreen();
       if (Checklogin != null && Checklogin) {
-        navigateTo = Home_Screen();
+        navigateTo = const Home_Screen();
       }
       // if (Checklogin == null) {
       //   navigateTo = LoginScreen();

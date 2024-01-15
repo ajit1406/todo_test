@@ -13,7 +13,7 @@ class Home_Screen extends StatefulWidget {
 }
 
 class uicolors {
-  static Color appblue = Color(0xff4d65f5);
+  static Color appblue = const Color(0xff4d65f5);
   static Color textfildlabel = Colors.white;
 }
 
@@ -67,7 +67,7 @@ class _Home_ScreenState extends State<Home_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
-          AppBar(backgroundColor: uicolor.bgblueColor, elevation: 0, actions: [
+          AppBar(backgroundColor: uicolor.bgblueColor, elevation: 0, actions: const [
         SizedBox(width: 20),
       ]),
       backgroundColor: uicolor.bgblueColor,
@@ -78,8 +78,8 @@ class _Home_ScreenState extends State<Home_Screen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
             Notestitle(),
-            SizedBox(height: 10),
-            NotesListView(),
+            const SizedBox(height: 10),
+            const NotesListView(),
           ]))),
       floatingActionButton: FlottingAddnoteButton(context),
     );
@@ -99,7 +99,7 @@ class _Home_ScreenState extends State<Home_Screen> {
     return FloatingActionButton(
         backgroundColor: Colors.white,
         foregroundColor: uicolor.bgblueColor,
-        child: Icon(Icons.add, size: 35),
+        child: const Icon(Icons.add, size: 35),
         onPressed: () {
           bottom_sheet(context);
         });
@@ -112,7 +112,7 @@ class _Home_ScreenState extends State<Home_Screen> {
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SizedBox(height: 200),
+          const SizedBox(height: 200),
           Container(
             height: 130,
             width: 130,
@@ -126,7 +126,7 @@ class _Home_ScreenState extends State<Home_Screen> {
               color: uicolors.textfildlabel,
             ),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           Text(
             username.toString(),
             style: TextStyle(
@@ -134,31 +134,31 @@ class _Home_ScreenState extends State<Home_Screen> {
                 color: uicolors.textfildlabel,
                 fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 100),
+          const SizedBox(height: 100),
           Container(
               alignment: Alignment.center,
               child: Text(email.toString(),
                   style:
                       TextStyle(fontSize: 20, color: uicolors.textfildlabel))),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ElevatedButton(
               onPressed: () async {
                 var prefs = await SharedPreferences.getInstance();
                 prefs.setBool(ComponentClass.Login_pref_key, false);
                 Navigator.pushReplacement(context, PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) {
-                    return SplashPage();
+                    return const SplashPage();
                   },
                 ));
               },
               style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   shape: RoundedRectangleBorder(
                       side: BorderSide(color: uicolors.textfildlabel, width: 1),
                       borderRadius: BorderRadius.circular(15)),
                   backgroundColor: uicolor.bgblueColor,
                   foregroundColor: uicolors.textfildlabel),
-              child: SizedBox(
+              child: const SizedBox(
                 width: 100,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -181,13 +181,13 @@ class _Home_ScreenState extends State<Home_Screen> {
     return showModalBottomSheet(
       enableDrag: true,
       backgroundColor: uicolor.bgblueColor,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
       context: context,
       builder: (context) {
         return Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Column(children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -223,19 +223,19 @@ class _Home_ScreenState extends State<Home_Screen> {
                         setState(() {});
                       }
                     },
-                    child: Text(
+                    child: const Text(
                       'Save',
                       style: TextStyle(fontSize: 20),
                     ))
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextField(
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
               controller: notesController,
               decoration: TextFildDecoration(),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             // TimerSelector(context),
             // radiobuttoms(0),
             // radiobuttoms(1),
@@ -251,13 +251,13 @@ class _Home_ScreenState extends State<Home_Screen> {
       context: context,
       builder: (context) {
         return AlertDialog.adaptive(
-          title: Text("Notes Can't Blank"),
+          title: const Text("Notes Can't Blank"),
           actions: [
             ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("OK"))
+                child: const Text("OK"))
           ],
         );
       },
@@ -267,7 +267,7 @@ class _Home_ScreenState extends State<Home_Screen> {
   InputDecoration TextFildDecoration() {
     return InputDecoration(
         hintText: 'Type Notes Here',
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w500,
         ),
@@ -313,8 +313,8 @@ class _Home_ScreenState extends State<Home_Screen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
           child: Text(
-            selectedTime == null ? 'Select Time' : selectedTime,
-            style: TextStyle(fontSize: 18),
+            selectedTime ?? 'Select Time',
+            style: const TextStyle(fontSize: 18),
           ),
         ),
       ),
@@ -323,7 +323,7 @@ class _Home_ScreenState extends State<Home_Screen> {
 }
 
 class NotesListView extends StatefulWidget {
-  NotesListView({
+  const NotesListView({
     super.key,
   });
 
@@ -341,12 +341,12 @@ class _NotesListViewState extends State<NotesListView> {
         itemBuilder: (context, index) {
           return NotesData[index]['note'] != null
               ? Container(
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15)),
                   child: ListTile(
-                    trailing: Container(
+                    trailing: SizedBox(
                       width: 100,
                       child: Row(
                         children: [
@@ -379,9 +379,9 @@ class _NotesListViewState extends State<NotesListView> {
                       ),
                     ),
                     title: Text(
-                      "${NotesData[index]['note'] == null ? null : NotesData[index]['note']}",
+                      "${NotesData[index]['note']}",
                       style:
-                          TextStyle(fontSize: 19, fontWeight: FontWeight.w500),
+                          const TextStyle(fontSize: 19, fontWeight: FontWeight.w500),
                     ),
                     // subtitle: showSubtitle(index),
                   ))
@@ -398,7 +398,7 @@ class _NotesListViewState extends State<NotesListView> {
         NotesData[index]['time'] == null
             ? ''
             : "Time : ${NotesData[index]['time']} | ${NotesData[index]['catagory']}",
-        style: TextStyle(
+        style: const TextStyle(
             color: Colors.black54, fontWeight: FontWeight.w500, fontSize: 16),
       ),
     );
@@ -414,7 +414,7 @@ class _NotesListViewState extends State<NotesListView> {
           elevation: 20,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          title: Text(
+          title: const Text(
             "Change Current Note",
             style: TextStyle(color: Colors.white),
           ),
@@ -453,8 +453,8 @@ class _NotesListViewState extends State<NotesListView> {
                     // Cancel button logic - simply close the dialog
                     Navigator.of(context).pop();
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
+                  child: const Padding(
+                    padding: EdgeInsets.all(10),
                     child: Text(
                       "Cancel",
                       style: TextStyle(fontSize: 18),
@@ -479,8 +479,8 @@ class _NotesListViewState extends State<NotesListView> {
                     Navigator.of(context).pop();
                     setState(() {});
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
+                  child: const Padding(
+                    padding: EdgeInsets.all(10),
                     child: Text(
                       "Update",
                       style: TextStyle(fontSize: 18),
@@ -504,7 +504,7 @@ class _NotesListViewState extends State<NotesListView> {
           elevation: 20,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          title: Text(
+          title: const Text(
             "Change Current Note",
             style: TextStyle(color: Colors.white),
           ),
@@ -537,8 +537,8 @@ class _NotesListViewState extends State<NotesListView> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
+                    child: const Padding(
+                      padding: EdgeInsets.all(10),
                       child: Text(
                         "Cancel",
                         style: TextStyle(fontSize: 18),
@@ -551,8 +551,8 @@ class _NotesListViewState extends State<NotesListView> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
+                    child: const Padding(
+                      padding: EdgeInsets.all(10),
                       child: Text(
                         "Update",
                         style: TextStyle(fontSize: 18),

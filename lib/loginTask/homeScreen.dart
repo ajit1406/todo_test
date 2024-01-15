@@ -5,7 +5,7 @@ import 'package:todo_test/loginTask/splashScreen.dart';
 import 'package:todo_test/screens/Home_screen.dart';
 
 class HomeScreendummy extends StatefulWidget {
-  HomeScreendummy({super.key});
+  const HomeScreendummy({super.key});
 
   @override
   State<HomeScreendummy> createState() => _HomeScreendummyState();
@@ -46,11 +46,11 @@ class _HomeScreendummyState extends State<HomeScreendummy> {
                 prefs.setBool(ComponentClass.Login_pref_key, false);
                 Navigator.pushReplacement(context, PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) {
-                    return SplashPage();
+                    return const SplashPage();
                   },
                 ));
               },
-              icon: Icon(Icons.logout_outlined)),
+              icon: const Icon(Icons.logout_outlined)),
         ),
         body: Center(
           child: Column(
@@ -63,10 +63,10 @@ class _HomeScreendummyState extends State<HomeScreendummy> {
                   color: uicolors.textfildlabel,
                 ),
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Text(
                 '''
-Name : ${username}\n
+Name : $username\n
 Email : $email\n
 ''',
                 style: TextStyle(fontSize: 25, color: uicolors.textfildlabel),

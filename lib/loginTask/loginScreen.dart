@@ -40,21 +40,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontWeight: FontWeight.bold,
                   color: uicolors.textfildlabel),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SizedBox(
                 width: 330,
                 child: TextField(
                     style: textfildtextstyle(),
                     controller: usernameController,
                     decoration: textfildDecoration('User Name'))),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SizedBox(
                 width: 330,
                 child: TextField(
                     style: textfildtextstyle(),
                     controller: emailController,
                     decoration: textfildDecoration('Email Address'))),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SizedBox(
                 width: 330,
                 child: TextField(
@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: textfildtextstyle(),
                     controller: passwordController,
                     decoration: textfildDecoration('Password'))),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
                 onPressed: () async {
                   var usernamevalue = usernameController.text.toString();
@@ -84,10 +84,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     prefs.setBool(ComponentClass.Login_pref_key, true);
                     topsuccesscnackbar(context);
 
-                    Timer(Duration(milliseconds: 1500), () {
+                    Timer(const Duration(milliseconds: 1500), () {
                       Navigator.pushReplacement(context, PageRouteBuilder(
                         pageBuilder: (context, animation, secondaryAnimation) {
-                          return Home_Screen();
+                          return const Home_Screen();
                         },
                       ));
                     });
@@ -113,12 +113,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 style: ElevatedButton.styleFrom(
                     side: BorderSide(color: uicolors.textfildlabel, width: 1),
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
                     backgroundColor: uicolors.appblue,
                     foregroundColor: uicolors.textfildlabel),
-                child: Text(
+                child: const Text(
                   'Login Now',
                   style: TextStyle(fontSize: 25),
                 ))
@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void toperrorsnackbar(BuildContext context, {required String messagetext}) {
     return showTopSnackBar(
         Overlay.of(context),
-        displayDuration: Duration(seconds: 1),
+        displayDuration: const Duration(seconds: 1),
         CustomSnackBar.error(
 
             // backgroundColor: uicolors.appblue,
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void topsuccesscnackbar(BuildContext context) {
     return showTopSnackBar(
-        displayDuration: Duration(seconds: 0),
+        displayDuration: const Duration(seconds: 0),
         Overlay.of(context),
         CustomSnackBar.success(
             backgroundColor: uicolors.appblue,
@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
   SnackBar loginSuccesSnackbar() {
     return SnackBar(
       behavior: SnackBarBehavior.floating,
-      margin: EdgeInsets.all(15),
+      margin: const EdgeInsets.all(15),
       content: Center(
         child: Text(
           'Login Successfully',
@@ -179,13 +179,13 @@ class _LoginScreenState extends State<LoginScreen> {
           TextStyle(color: uicolors.textfildlabel, fontWeight: FontWeight.bold),
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: Colors.white, width: 1)),
+          borderSide: const BorderSide(color: Colors.white, width: 1)),
       border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: Colors.white, width: 1)),
+          borderSide: const BorderSide(color: Colors.white, width: 1)),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: Colors.white, width: 1)),
+          borderSide: const BorderSide(color: Colors.white, width: 1)),
     );
   }
 }
